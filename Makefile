@@ -1,15 +1,15 @@
-CXX = clang++
+CXX = g++
 
 # If your compiler is a bit older you may need to change -std=c++11 to -std=c++0x
 CXXFLAGS = -Wall -c -std=c++11
 # SDL2 and libcurl are dependencies
-LDFLAGS = -lsdl2 -lcurl
+LDFLAGS = -lSDL2 -lcurl
 EXE = ps3host
 
 all: $(EXE)
 
 $(EXE): main.o ps3controller.o callbacks.o
-	$(CXX) $(LDFLAGS) main.o ps3controller.o callbacks.o -o $@
+	$(CXX) main.o ps3controller.o callbacks.o -o $@ $(LDFLAGS)
 
 
 main.o: main.cpp

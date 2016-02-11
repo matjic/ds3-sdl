@@ -12,11 +12,17 @@ void Player(string key);
 void Speed(string change);
 void Volume(string change);
 
+#ifndef LINUX
+const char* KODI_START_COMMAND = "if ! pgrep \"Kodi\" >/dev/null; then nohup /Applications/Kodi.app/Contents/MacOS/Kodi >/dev/null  & fi";
+#else
+const char* KODI_START_COMMAND = "if ! pgrep \"kodi\" >/dev/null; then nohup kodi & fi";
+#endif
 
 void Home()
 {
     //Start Kodi
-    system("if ! pgrep \"Kodi\" >/dev/null; then echo 'Starting Kodi...'; nohup /Applications/Kodi.app/Contents/MacOS/Kodi >/dev/null  & fi");
+    std::cout << "Starting Kodi..." << endl;
+    system(KODI_START_COMMAND);
 }
 
 void InputDown()
@@ -134,8 +140,8 @@ int postJSON(string data, const char* path)
     res = curl_easy_perform(curl);
     /* Check for errors */ 
     if(res != CURLE_OK)
-      fprintf(stderr, "curl_easy_perform() failed: %s\n",
-              curl_easy_strerror(res));
+      //fprintf(stderr, "curl_easy_perform() failed: %s\n",
+      //        curl_easy_strerror(res));
  
     /* always cleanup */ 
     curl_easy_cleanup(curl);
