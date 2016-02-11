@@ -1,0 +1,7 @@
+# for ps3 controller connectivity
+sudo apt-add-repository ppa:falk-t-j/qtsixa
+sudo apt-get update
+sudo apt-get install sixad
+# for dependencies (note that you may install other versions of libcurl#-XXXX-dev)
+sudo apt-get install libcurl4-openssl-dev libsdl2-dev
+echo "YOU MUST UNCOMMENT THE #define LINE IN CALLBACKS.H BEFORE COMPILING"

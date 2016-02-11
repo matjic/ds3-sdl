@@ -8,7 +8,7 @@
 
 #include "ps3controller.h"
 
-PS3_Controller::PS3_Controller(uint sdl_index)
+PS3_Controller::PS3_Controller(int sdl_index)
 {
     valid = false;
     axisValues = nullptr;
@@ -42,8 +42,8 @@ PS3_Controller::~PS3_Controller()
 
 void PS3_Controller::update(SDL_Event event)
 {
-    uint axis = -1;
-    uint button = -1;
+    int axis = -1;
+    int button = -1;
     for(int i = 0; i < numButtons; i++)
     {
         buttonStates[i] = BUTTON_NEUTRAL;
@@ -52,7 +52,7 @@ void PS3_Controller::update(SDL_Event event)
     switch (event.type)
     {
         case SDL_JOYAXISMOTION:
-            axis = (uint)event.jaxis.axis;
+            axis = (int)event.jaxis.axis;
             axisValues[axis] = event.jaxis.value;
             break;
             
@@ -69,7 +69,7 @@ void PS3_Controller::update(SDL_Event event)
     }
 }
 
-int PS3_Controller::getButtonState(uint button) const
+int PS3_Controller::getButtonState(int button) const
 {
     if (button > numButtons)
     {
@@ -147,12 +147,12 @@ bool PS3_Controller::isValid()
     return valid;
 }
 
-uint PS3_Controller::getNumAxes() const
+int PS3_Controller::getNumAxes() const
 {
     return numAxes;
 }
 
-uint PS3_Controller::getNumButtons() const
+int PS3_Controller::getNumButtons() const
 {
     return numButtons;
 }

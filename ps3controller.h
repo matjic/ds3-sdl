@@ -15,7 +15,7 @@
 class PS3_Controller
 {
 public:
-    PS3_Controller(uint sdl_index);
+    PS3_Controller(int sdl_index);
     PS3_Controller(PS3_Controller& other);
     PS3_Controller& operator=(const PS3_Controller& other);
     ~PS3_Controller();
@@ -25,9 +25,9 @@ public:
     std::string getName() const;
     SDL_Joystick* getController() const;
     void update(SDL_Event event);
-    uint getNumAxes() const;
-    uint getNumButtons() const;
-    int getButtonState(uint button) const;
+    int getNumAxes() const;
+    int getNumButtons() const;
+    int getButtonState(int button) const;
 
     enum btn_constants
     {
@@ -62,8 +62,8 @@ private:
     
     bool valid;
     SDL_Joystick* controller;
-    uint numAxes;
-    uint numButtons;
+    int numAxes;
+    int numButtons;
     int* axisValues;
     int* buttonStates;
     std::string name;

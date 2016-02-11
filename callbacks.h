@@ -1,6 +1,9 @@
 #ifndef CALLBACKS_H
 #define CALLBACKS_H
 
+
+#define LINUX
+
 void InputDown();
 void InputLeft();
 void InputUp();
