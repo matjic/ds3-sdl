@@ -21,8 +21,8 @@ const char* KODI_START_COMMAND = "if ! pgrep \"kodi\" >/dev/null; then nohup kod
 void Home()
 {
     //Start Kodi
-    std::cout << "Starting Kodi..." << endl;
-    system(KODI_START_COMMAND);
+    std::cout << "Sending message to NodeMCU..." << endl;
+    system("mosquitto_pub -u nodemcu -P esp8266 -t \"/topic\" -m \"nodemcu\"");
 }
 
 void InputDown()
